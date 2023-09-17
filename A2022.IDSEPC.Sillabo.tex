@@ -1,0 +1,353 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+\documentclass[11pt, a4paper]{article}
+\usepackage{graphicx} 
+\usepackage[export]{adjustbox}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage{array, booktabs, longtable}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{xparse}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{fp}
+\usepackage{ulem}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+
+
+% The title of the current document to be produced.
+\NewDocumentCommand{\doctitle}{}{Sillabo del Corso}
+\NewDocumentCommand{\materialedidattico}{o}{%
+    \IfNoValueTF{#1}
+        {\redtext{\textbf{Materiale didattico~}}}
+        {\redtext{\textbf{Materiale didattico:~} #1}}}
+\NewDocumentCommand{\argomento}{o}{%
+    \IfNoValueTF{#1}
+        {\bluetext{\textbf{Argomento~}}}
+        {\bluetext{\textbf{Argomento:~} #1}}}
+\NewDocumentCommand{\dataeora}{o}{%
+    \IfNoValueTF{#1}
+        {\textcolor{ForestGreen}{\textbf{Data e ora~}}}
+        {\textcolor{ForestGreen}{\textbf{Data e ora:~} #1}}}
+
+%
+\setlength{\unitlength}{1in}
+\renewcommand{\arraystretch}{2}
+
+%------------------------------------------------------------
+% Import commands for both teacher and course information.  | 
+% NOTE: Change your teacher and course info in these files. |
+%------>------>------>------>------>------>------>------>-->|
+\input{Sillabo/teacher-info}                              %|
+\input{Sillabo/course-info}                               %|   
+%
+%------------------------------------------------------------
+%-- Import packages and custom command definitons.          |
+%------>------>------>------>------>------>------>------>-->|
+\input{Sillabo/packages-imports}                          %|  
+\input{Sillabo/custom-commands}   
+%
+%---> Genereate & inject metadata                           |
+\input{Sillabo/hyperef.doc.info}                          %|
+%------------------------------------------------------------
+
+\topmargin -70pt
+\begin{document} 
+
+%-------------------------------------------------------------
+%-- Make the header of the document                          |
+%------>------>------>------>------>------>------>------>--> |
+\input{Sillabo/document-header}
+  
+%-------------------------------------------------------------
+%-- Insert the course & teacher info                         |
+%------>------>------>------>------>------>------>------>--> |
+\hrule     
+\vspace{.5cm}
+\begin{multicols}{1}
+    \begin{description}[labelindent=0.02in,leftmargin=1.25in,style=nextline]
+        %--> First column:         
+        \item[\textsc{Docente}:] \instructor
+        \item[\textsc{Fisso}:]\landline
+        \item[\textsc{Cellulare}:]\cellphone
+        \item[\textsc{E-mail}:] \email
+        \item[\textsc{Ricevimento}:] \hours
+        \item[\textsc{Studio}:]  {\color{darkred}\office}
+        \item[\textsc{Telegram}:] \contattoTelegram
+        
+        \item[\textsc{Prerequisiti}:] \prerequisite
+        \item[\textsc{LM}:] \csection
+        \item[\textsc{Gruppo}:] \gruppoTelegram
+        \item[\textsc{Impegno}:] \raggedright\ponderation
+        %--> Second column:         
+        \item[] 
+    \end{description}
+\end{multicols}
+\hrule        
+\vspace{.2cm}
+
+ %--------  Course Description  ------------------------------
+\customsection{Descrizione del corso}  
+\noindent
+Il corso di pone l'obiettivo di fornire a studenti senza una precedente formazione informatica le basi relative alla scienza dei dati e al pensiero computazionale per le successive elaborazoni nel corso di laurea magistrale in Governance e politiche dell'innovazione digitale.
+
+Dapprima il corso introduce il concetto di dato e presenta una carrellata dei principali componenti di sistemi digitali, con costante riferimento al pensiero computazionale. Quindi si occupa di definire come questi sistemi digitali possano essere costruiti ed elaborati utilizzando anche modelli di produzione lean, agili, e basati sui concetti di conoscenza distribuita. A questo punto il corso approfondisce le tematiche della scienza dei dati con una particolare attenzione alla analisi dei testi, come paradigma dell'estrazione di informazioni. Infine nel corso si utilizzer\`{a} uno strumento di produzione di documenti chiamato LaTeX che faciliter\`{a} l'apprendimento dei concetti menzionati.
+
+\customsection{Obiettivi formativi} 
+
+\begin{borderedsquare}
+     \setlength\itemsep{0.3em}        
+	\item Definire una base solida omogenea della struttura del processo computazionale.
+	\item Strutturare il concetto di programmazione e di linguaggio di programmazione.
+	\item Elaborare il concetto di trasformazione digitale.
+	\item Evidenziare il concetto di produzione del software,  da un punto di vista sia organizzativo che cognitivo.
+	\item Presentare come l'uso del pensiero computazionale e degli strumenti informatici possano risolvere problemi di organizzazione dei sistemi, di comprensione di strutture complesse e di previsione di eventi.
+	\item Fornire l'elaborazione del testo e la sua comprensione come paradigma interpretativo del processo di trasformazione digitale.
+\end{borderedsquare}
+        
+%\clearpage    
+
+\customsection{Prerequisiti}
+\noindent Il corso non richiede alcun prerequisito specifico, a parte la conoscenza dei fondamenti di matematica (ad esempio come il risultato di una maturit\`{a} scientifica) logica e familiarit\`{a} con problemi che possono essere risolti in modo automatico.
+
+
+\customsection{Valutazione}    
+Lo studente pu\`{o} decidere la forma valutativa che preferisce tra le seguenti:
+\begin{itemize}
+    \item orale omnicomprensivo,
+    \item elaborazione di un testo su un ambito specifico del corso seguito da un orale focalizzato,
+    \item predisposizione di un elaborato sulla conoscenza distribuita che evidenzi la conoscenza del materiale presentato nel corso
+\end{itemize}
+
+\customsection{Testi}  
+%---------------------------------
+%--> List of recommended textbooks. 
+\begin{itemize}[itemsep=4pt,parsep=0pt,topsep=1pt,partopsep=1pt]
+	\item[\color{darkblue}\faNewspaperO] \textbf{\textsc{Risorse disponibili online:}}
+	Materiale presentato in classe, altri riferimenti comunicati dal docente durante le lezioni.  
+		
+	\item[\color{darkblue}\faBook] \textbf{\textsc{Libro di testo:}} Non c'\`{e} un libro di testo obbligatorio. Qui nel seguito si presenta una serie di lettura consigliate.
+\end{itemize}
+\vspace{.4cm}
+\hrule
+\vspace{.4cm}
+\begin{minipage}[b]{0.17\linewidth}          
+	\includegraphics[width=.95\linewidth]{Sillabo/images/TextAnalysisInPythonForSocialScientists.jpg}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.75\linewidth}          
+	\noindent \textbf{Titolo:} Text Analysis in Python for Social Scientists - Discovery and Exploration \\
+	\textbf{Autore:} Dirk Hovy \\
+	\textbf{Casa editrice:} Cambridge University Press, publication year: 2021  \\
+	\textbf{ISBN Online:} 9781108873352\\   
+	\vspace{1cm}
+	~
+\end{minipage}
+\vspace{.18cm}
+\hrule
+\vspace{.4cm}
+\begin{minipage}[b]{0.17\linewidth}          
+	\includegraphics[width=.95\linewidth]{Sillabo/images/AppliedComputationalThinkingWithPython.jpeg}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.75\linewidth}          
+	\noindent \textbf{Titolo:} Applied Computational Thinking with Python \\
+	\textbf{Autore:} Sof\'{i}a De Jes\'{u}s , Dayrene Martinez \\
+	\textbf{Casa editrice:} Packt Publishing; publication year: 2020  \\
+	\textbf{ISBN-13:} 978-1839219436\\  
+	\vspace{1cm}
+	~
+\end{minipage}
+\vspace{.18cm}
+\hrule
+\vspace{.4cm}
+\begin{minipage}[t]{0.17\linewidth}          
+	\includegraphics[trim={0 0 0 1cm},clip, width=.95\linewidth,]{Sillabo/images/1200px-Wikibooks-logo.png}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.75\linewidth}  
+    \vspace{.5cm}
+	\noindent \textbf{Titolo:} The LaTeX Wikibook  \\
+	\textbf{Autore:} Multipli \\
+	\textbf{Casa editrice:} Wikibooks community  \\
+	\textbf{Disponibile online:} \url{https://en.wikibooks.org/wiki/LaTeX}\\
+	\vspace{1cm}
+	~
+\end{minipage}
+\vspace{.18cm}
+\hrule
+
+\\
+
+%--------  Required Software and Material ------------------------------
+\vspace{.4cm}
+
+\customsection{Strumenti software utilizzati }  
+\begin{itemize}[itemsep=2pt,parsep=0pt,topsep=2pt,partopsep=2pt]
+	%    \item[\color{darkblue}\faCoffee] Java 7 or 8 (32 or 64 bits)
+	\item[\color{darkblue}\faLaptopCode] \textbf{Sistemi operativi:} \faWindows {} Windows  10,  \faLinux {} Linux, \textcolor{vanierred}{\textbf{o}} \faApple {} macOS 
+	\item[\color{darkblue}\faCode] \textbf{IDE per Python:} \faUnity a scelta dello studente, da coordinare con il parallelo corso di laboratorio di programmazione
+	\item [{\color{darkblue}\faChrome}] \textbf{Web Browser:} Chrome, Safari o Firefox.   
+	\item[{\color{darkblue} \faWpforms}] LaTex per la produzione e l'analisi di documenti; all'uopo gli studenti sono incoraggiati a crearsi un account su \url{overleaf.com} e comunicarlo al docente
+\end{itemize}   
+
+\customsection{Regole di comportamento} 
+\begin{itemize}[itemsep=2.5pt,parsep=0pt,topsep=8pt,partopsep=4pt]
+	\item[{ \color{darkblue} \faLaptop \faMobile \faHeadphones}] In classe, l'uso di cellulari, di computer e di cuffie, quando non richiesto dal docente, \`{e}  \underline{vietato}. I cellulari vanno spenti e riposti in luogo sicuro non nei banchi.
+	
+	\item[{\color{darkblue} \faEdit}] Il docente si aspetta che gli studenti si presentino con carta e penna/matita e prendano attivamente appunti.
+	\item[{\color{darkblue} \faWechat}] Gli studenti sono ammessi alle lezioni solo all'inizio e durante le lezioni devono astenersi dal parlare tra loro, se non quando esplicitamente richiesto dal docente.
+	
+	\item[{\color{darkred} \faThumbsDown}] Il plagiarismo negli elaborati comporter\`{a} la bocciatura nell'esame e le ulteriori penalit\`{a} previste nei competenti regolamenti accademici.
+\end{itemize}
+
+%\customsection{\sout{Aula per le lezioni}}
+
+\noindent
+\sout{AULA A. RUFFINI - Accesso da Via Belmeloro 8/2 \\
+Piano Primo Interrato \\
+Via Selmi, 3 - Bologna \\
+\href{https://goo.gl/maps/iqA6NbC71YwRTXKj6}{Posizione dell'ingresso su Google Maps}\\}
+
+%\customsection{\textcolor{red}{Aggiornamento sulle aule per le lezioni}}
+
+\noindent
+\textbf{Marted\`{i} 17:00-19:00}\\
+AULA ARDIGO'\\
+Piano Primo\\
+Palazzo Hercolani\\ 
+Strada Maggiore, 45 - Bologna \\
+\href{https://goo.gl/maps/aVonfPV63NTkrmvm8}{Posizione dell'ingresso su Google Maps}\\
+
+\noindent
+\textbf{Mercoled\`{i} 15:00-17:00}\\
+AULA A. RUFFINI - Accesso da Via Belmeloro 8/2 \\
+Piano Primo Interrato \\
+Via Selmi, 3 - Bologna \\
+\href{https://goo.gl/maps/iqA6NbC71YwRTXKj6}{Posizione dell'ingresso su Google Maps}\\
+
+\noindent
+\textbf{Mercoled\`{i} 17:00-19:00}\\
+AULA 8 \\
+Piano Primo\\ 
+Palazzo Hercolani \\
+Strada Maggiore, 45 - Bologna \\
+\href{https://goo.gl/maps/aVonfPV63NTkrmvm8}{Posizione dell'ingresso su Google Maps}\\
+
+\noindent
+\textbf{Gioved\`{i} 17:00-19:00}\\
+AULA 1 \\
+Piano Terra \\ 
+Palazzo Hercolani \\ 
+Strada Maggiore, 45 - Bologna \\\href{https://goo.gl/maps/aVonfPV63NTkrmvm8}{Posizione dell'ingresso su Google Maps}
+
+
+
+\customsection{Programma di massima delle lezioni}
+\newcounter{lezione}
+\setcounter{lezione}{0}
+\addtocounter{lezione}{1}
+
+%TODO: split implementation into 3 builds.
+\renewcommand{\arraystretch}{1.5} % this reduces the vertical spacing between rows    
+\noindent\begin{longtable}{|C{1cm}|p{15cm}|}
+\toprule
+	\thead{\color{darkblue} Lezione} & \thead{\argomento, \materialedidattico \& \dataeora} \\ 
+	%---s Load the table body: dynamic table content. 
+\midrule
+    \endhead
+	\centering\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Presentazione del corso e natura del mercato e del dato]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/main/A2022.IDSEPCL03.L04.pdf}{Lucidi presentati dal docente sul corso e sulla natura del mercato e del dato}] \\
+	& \dataeora[20 settembre 2022, 17-19] \\
+	\hline    
+	\centering\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[La produzione del software nel lavoro (condiviso); gitHub]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/main/A2022.IDSEPCL02.pdf}{Lucidi presentati dal docente sulla produzione del software nel lavoro (condiviso)}] \\
+	& \dataeora[21 settembre 2022, 15-17] \\
+	\hline    
+	\centering\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Il dato come documento; La scrittura di documenti in LaTex come paradigma della produzione digitale (parte 1)]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/main/A2022.IDSEPCL03.L04.pdf}{Lucidi presentati dal docente su LaTeX}] \\
+	& \dataeora[21 settembre 2022, 17-19] \\
+	\hline    
+	\centering\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[La scrittura di documenti in LaTex come paradigma della produzione digitale (parte 2)]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/main/A2022.IDSEPCL03.L04.pdf}{Lucidi presentati dal docente su LaTeX}] \\
+	& \dataeora[5 ottobre 2022, 15-17] \\
+	\hline    
+%	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Struttura dei calcolatori]  \\
+%	& \materialedidattico \\
+%	\hline    
+%	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Sistemi operativi e reti]  \\
+%	& \materialedidattico \\
+%	\hline    
+%	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Linguaggi di programmazione]  \\
+%	& \materialedidattico \\
+%	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Processo di produzione del software]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/main/A2022.IDSEPCL05.pdf}{Lucidi presentati dal docente sul processo di produzione del software}] \\
+	& \dataeora[5 ottobre 2022, 17-19] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Sperimentazione e deduzione; il modello GQM]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/main/A2022.IDSEPCL06.pdf}{Lucidi presentati dal docente sui fondamenti della sperimentazione, deduzione, misurazione e GQM}] \\
+	& \dataeora[11 ottobre 2022, 17-19] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Scale di dati]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/main/A2022.IDSEPCL07.pdf}{Lucidi presentati dal docente sulle scale di dati}] \\
+	& \dataeora[12 ottobre 2022, 15-17] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Revisione dei fondamenti di statistica descrittiva (parte 1)]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/4794e0972fcff9675c9169ed87172dc57bf0eaa1/A2022.IDSEPCL08.pdf}{Lucidi presentati dal docente sulla statistica descrittiva}] \\
+	& \dataeora[12 ottobre 2022, 17-19] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Revisione dei fondamenti di statistica descrittiva (parte 2)]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/4794e0972fcff9675c9169ed87172dc57bf0eaa1/A2022.IDSEPCL08.pdf}{Lucidi presentati dal docente sulla statistica descrittiva}] \\
+	& \dataeora[18 ottobre 2022, 17-19] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Progettazione degli esperimenti]  \\
+	& \materialedidattico \\
+	& \dataeora[19 ottobre 2022, 15-17] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Statistica inferenziale -- le basi e principi di regressione lineare]  \\
+	& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/4794e0972fcff9675c9169ed87172dc57bf0eaa1/A2022.IDSEPCL09.pdf}{Lucidi presentati dal docente sulla regressione lineare}]  \\
+	& \dataeora[19 ottobre 2022, 17-19] \\
+	\hline
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Statistica inferenziale -- regressione lineare]  \\
+& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/4794e0972fcff9675c9169ed87172dc57bf0eaa1/A2022.IDSEPCL09.pdf}{Lucidi presentati dal docente sulla regressione lineare}] \\
+	& \dataeora[8 novembre 2022, 17-19] \\
+	\hline
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Statistica inferenziale -- la correlazione]  \\
+& \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/4794e0972fcff9675c9169ed87172dc57bf0eaa1/A2022.IDSEPCL10.pdf}{Lucidi presentati dal docente sulla correlazione}]  \\
+	& \dataeora[9 novembre 2022, 15-17] \\
+	\hline
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Dalla statistica inferenziale all’apprendimento automatico; la regressione logistica]  \\
+
+   & \materialedidattico[\href{https://github.com/GiancarloSucci/UniBo.IDSEPC.A2022/blob/4794e0972fcff9675c9169ed87172dc57bf0eaa1/A2022.IDSEPCL11.pdf}{Lucidi presentati dal docente sulla regressione logistica}]  \\
+	& \dataeora[9 novembre 2022, 17-19] \\
+	\hline    
+   \textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Principi di reti neurali (parte 1)]  \\
+	& \materialedidattico \\
+	& \dataeora[15 novembre 2022, 17-19] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Principi di reti neurali (parte 2)]  \\
+	& \materialedidattico \\
+	& \dataeora[16 novembre 2022, 15-17] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Principi di reti neurali (parte 3)]  \\
+	& \materialedidattico \\
+	& \dataeora[16 novembre 2022, 17-19] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Analisi automatica di testi (parte 1)]  \\
+	& \materialedidattico \\
+	& \dataeora[23 novembre 2022, 17-19] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Analisi automatica di testi (parte 2)]  \\
+	& \materialedidattico \\
+	& \dataeora[29 novembre 2022, 17-19] \\
+	\hline    
+	\textbf{\thelezione \addtocounter{lezione}{1}} &   \argomento[Analisi automatica di testi (parte 3)]  \\
+	& \materialedidattico \\
+	& \dataeora[30 novembre 2022, 17-19] \\
+	\hline    
+
+\end{longtable}   
+
+\vspace{1cm}
+\noindent \textcolor{red}{\textbf{\underline{NOTA:}}} Il programma sopra specificato e l'aula delle lezioni possono essere modificati per esigenze organizzative e didattiche. 
+
+\end{document} 
