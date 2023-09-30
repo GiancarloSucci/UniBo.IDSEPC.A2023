@@ -19,11 +19,18 @@
   \usepackage{tikz}
   \usetikzlibrary{plotmarks}
   \usepackage{pgfplots}
+  \pgfplotsset{compat=1.18}
   \newcommand{\Ivec}[1]{\mbox{\boldmath $#1$}}
     \usepackage[normalem]{ulem}
     % \usepackage{tipa}
     \newcommand{\git}{\texttt{\textbf{git}}\xspace}
     \usepackage{listings}
+    \lstset{basicstyle=\ttfamily,
+     showstringspaces=false,
+     commentstyle=\color{red},
+     keywordstyle=\color{blue}
+    }
+
 } 
 
 
@@ -415,7 +422,7 @@ The most commonly used git commands are:
   \texttt{\textbf{file2}} 
   \begin{figure}
     \centering
-    \includegraphics[width=9cm]{A2023.LavoroCondiviso/local-commit-filename}
+    \includegraphics[width=8cm]{A2023.LavoroCondiviso/local-commit-filename}
   \end{figure}
   \begin{center}
     \texttt{\textbf{git commit -a}}
@@ -455,6 +462,250 @@ The most commonly used git commands are:
     \centering
     \includegraphics[width=9.4cm]{A2023.LavoroCondiviso/gitk_cropped}
   \end{figure}
+\end{frame}
+
+
+\begin{frame}{\centerline{\git ~ -- Esempio passo-passo da terminale (1/10)}}
+  \begin{figure}
+    \centering
+    Scenario 1: Sviluppatore \textbf{singolo}, repository \textbf{centralizzato}. Minimalistico.
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (2/10)}}
+\begin{itemize}
+\item \textcolor{red}{Non \`{e} richiesto per l'esame, ma viene fatto per rispondere a una richiesta precisa.}\\
+\item \textcolor{blue}{Partiamo con la creazione del repository.}
+\end{itemize}
+%\begin{verbatim}
+\begin{lstlisting}[language=sh]
+
+% mkdir EserciziGit
+% cd EserciziGit  
+% ls -a
+    .    ..
+% git init  
+Initialized empty Git repository in EserciziGit/.git/
+% ls -a
+    .    ..    .git
+\end{lstlisting}
+%\end{verbatim}
+
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (3/10)}}
+\begin{itemize}
+\item \textcolor{blue}{Ora creiamo un file e lo aggiungiamo.}
+\end{itemize}
+%\begin{verbatim}
+\begin{lstlisting}[language=sh]
+
+% echo "Ciao" > primoFile.txt
+% git add primoFile.txt
+% ls -a
+    .    ..    .git    primoFile.txt
+% cd .git
+% ls -la
+total 32
+drwxr-xr-x@ 10 charmi  staff  320 30 Set 23:19 .
+drwxr-xr-x@  4 charmi  staff  128 30 Set 21:55 ..
+-rw-r--r--@  1 charmi  staff   21 30 Set 21:14 HEAD
+-rw-r--r--@  1 charmi  staff  137 30 Set 21:14 config
+-rw-r--r--@  1 charmi  staff   73 30 Set 21:14 description
+drwxr-xr-x@ 15 charmi  staff  480 30 Set 21:14 hooks
+-rw-r--r--@  1 charmi  staff  112 30 Set 23:19 index
+drwxr-xr-x@  3 charmi  staff   96 30 Set 21:14 info
+drwxr-xr-x@  5 charmi  staff  160 30 Set 23:19 objects
+drwxr-xr-x@  4 charmi  staff  128 30 Set 21:14 refs
+
+\end{lstlisting}
+%\end{verbatim}
+
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (4/10)}}
+\begin{itemize}
+\item \textcolor{blue}{Notiamo che il file \texttt{index} ha una data pi\`{u} recente degli altri, cio\`{e} \`{e} stato modificato di recente, a seguito del comando di \texttt{add}.}
+\item \textcolor{blue}{\texttt{index} non \`{e} un file di testo, ma possiamo provare a estrarre una parte del suo contenuto.}
+
+\end{itemize}
+\begin{lstlisting}[language=sh]
+% strings index
+DIRC
+}Z:_
+}T
+  9
+
+A!oJ/(F
+primoFile.txt
+9irT
+\end{lstlisting}
+\begin{itemize}
+\item \textcolor{blue}{Oltre a tante stringhe incomprensibili c'\`{e} il file che abbiamo appena aggiunto: \texttt{primoFile.txt}}
+\end{itemize}
+
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (5/10)}}
+\begin{itemize}
+\item \textcolor{blue}{Ora facciamo commit.}
+
+\end{itemize}
+\begin{lstlisting}[language=sh]
+% git commit -m "Faccio commit di primoFile.txt"
+[main (root-commit) 9b65641] Faccio commit di primoFile.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 primoFile.txt
+% ls -a
+    .    ..    .git    primoFile.txt
+
+\end{lstlisting}
+
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (6/10)}}
+\begin{itemize}
+\item \textcolor{blue}{Esploriamo i cambiamenti.}
+\end{itemize}
+\begin{lstlisting}[language=sh]
+% cd .git
+% ls -la
+total 40
+drwxr-xr-x@ 12 charmi  staff  384 30 Set 23:28 .
+drwxr-xr-x@  4 charmi  staff  128 30 Set 21:55 ..
+-rw-r--r--@  1 charmi  staff   31 30 Set 23:28 COMMIT_EDITMSG
+-rw-r--r--@  1 charmi  staff   21 30 Set 21:14 HEAD
+-rw-r--r--@  1 charmi  staff  137 30 Set 21:14 config
+-rw-r--r--@  1 charmi  staff   73 30 Set 21:14 description
+drwxr-xr-x@ 15 charmi  staff  480 30 Set 21:14 hooks
+-rw-r--r--@  1 charmi  staff  145 30 Set 23:28 index
+drwxr-xr-x@  3 charmi  staff   96 30 Set 21:14 info
+drwxr-xr-x@  4 charmi  staff  128 30 Set 23:28 logs
+drwxr-xr-x@  7 charmi  staff  224 30 Set 23:28 objects
+drwxr-xr-x@  4 charmi  staff  128 30 Set 21:14 refs
+% cd ..
+\end{lstlisting}
+
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (7/10)}}
+\begin{itemize}
+\item \textcolor{blue}{Notiamo i cambiamenti nelle directory \texttt{index}, \texttt{logs} e \texttt{object}.}
+\begin{itemize}
+\item \textcolor{red}{\texttt{index} mantiene l'indicizzazione delle versioni }
+\item \textcolor{red}{\texttt{log} mantiene l'evoluzione del repository e dei messaggi}
+\item \textcolor{red}{\texttt{object} contiene i file opportunamente codificati }
+
+\end{itemize}
+
+\end{itemize}
+\begin{lstlisting}[language=sh]
+ % git log
+commit 9b65641ae2c04a48ba180aa337f1ef691c8c841b (HEAD -> main)
+Author: GiancarloSucci <GiancarloSucci@users.noreply.github.com>
+Date:   Sat Sep 30 23:28:23 2023 +0200
+
+    Faccio commit di primoFile.txt
+% ls -la .git/objects/9b 
+total 8
+drwxr-xr-x@ 3 charmi  staff   96 30 Set 23:28 .
+drwxr-xr-x@ 7 charmi  staff  224 30 Set 23:28 ..
+-r--r--r--@ 1 charmi  staff  153 30 Set 23:28 65641ae2c04a48ba180aa337f1ef691c8c841b
+
+\end{lstlisting}
+
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (8/10)}}
+\begin{itemize}
+\item \textcolor{blue}{Facciamo una modifica e vediamo che cosa succede}
+
+\end{itemize}
+\begin{lstlisting}[language=sh]
+% echo "Aggiungo testo " >> primoFile.txt
+% cat primoFile.txt 
+Ciao
+Aggiungo testo 
+% git commit primoFile.txt -m "Faccio commit alle modifiche"
+[main caf6b65] Faccio commit alle modifiche
+ 1 file changed, 1 insertion(+)
+
+\end{lstlisting}
+\begin{itemize}
+\item \textcolor{blue}{Andiamo ad esplorare il repository}
+
+\end{itemize}
+
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (9/10)}}
+\begin{lstlisting}[language=sh]
+% cd .git
+% ls -la
+total 40
+drwxr-xr-x@ 12 charmi  staff  384 30 Set 23:52 .
+drwxr-xr-x@  4 charmi  staff  128 30 Set 21:55 ..
+-rw-r--r--@  1 charmi  staff   29 30 Set 23:52 COMMIT_EDITMSG
+-rw-r--r--@  1 charmi  staff   21 30 Set 21:14 HEAD
+-rw-r--r--@  1 charmi  staff  137 30 Set 21:14 config
+-rw-r--r--@  1 charmi  staff   73 30 Set 21:14 description
+drwxr-xr-x@ 15 charmi  staff  480 30 Set 21:14 hooks
+-rw-r--r--@  1 charmi  staff  145 30 Set 23:52 index
+drwxr-xr-x@  3 charmi  staff   96 30 Set 21:14 info
+drwxr-xr-x@  4 charmi  staff  128 30 Set 23:28 logs
+drwxr-xr-x@ 10 charmi  staff  320 30 Set 23:52 objects
+drwxr-xr-x@  4 charmi  staff  128 30 Set 21:14 refs
+% cat COMMIT_EDITMSG 
+Faccio commit alle modifiche
+\end{lstlisting}
+
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\centerline{\git ~ -- Esempio passo-passo da terminale (10/10)}}
+\begin{lstlisting}[language=sh]
+% cd logs
+% ls -la
+total 8
+drwxr-xr-x@  4 charmi  staff  128 30 Set 23:28 .
+drwxr-xr-x@ 12 charmi  staff  384 30 Set 23:52 ..
+-rw-r--r--@  1 charmi  staff  398 30 Set 23:52 HEAD
+drwxr-xr-x@  3 charmi  staff   96 30 Set 23:28 refs
+ % cat HEAD 
+0000000000000000000000000000000000000000 9b65641ae2c04a48ba180aa337f1ef691c8c841b GiancarloSucci <GiancarloSucci@users.noreply.github.com> 1696109303 +0200	commit (initial): Faccio commit di primoFile.txt
+9b65641ae2c04a48ba180aa337f1ef691c8c841b caf6b652584ede5dbd2a31710b0e9a97d8ea2e69 GiancarloSucci <GiancarloSucci@users.noreply.github.com> 1696110778 +0200	commit: Faccio commit alle modifiche
+% cd ..
+% ls -la objects/ca/f6b652584ede5dbd2a31710b0e9a97d8ea2e69
+-r--r--r--@ 1 charmi  staff  184 30 Set 23:52 objects/ca/f6b652584ede5dbd2a31710b0e9a97d8ea2e69
+\end{lstlisting}
+\begin{center}
+    \tiny Estratto con modifiche da: \url{https://tutorials.codebar.io/version-control/command-line/tutorial.html}
+\end{center}
 \end{frame}
 
 
